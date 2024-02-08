@@ -11,6 +11,27 @@ namespace NS_JudoApp
     /// </summary>
     public class FeesCalculator
     {
+        public TrainingPlan GetPlan()
+        {
+            Console.WriteLine("North Sussex Judo: Training Plan - Prices (£GBP)");
+            Console.WriteLine();
+
+            int planNumber = 1;
+
+            foreach(int i in Enum.GetValues(typeof(TrainingPlan)))
+            {
+                Console.Write($"    {planNumber}: ");
+                Console.Write($"{Enum.GetName(typeof(TrainingPlan), i)}");
+                Console.Write($"{Enum.GetValues(typeof(TrainingPlan))}");
+
+                planNumber++;
+            }
+
+            Console.WriteLine("Enter the training plan for the athlete > ");
+            return TrainingPlan.Beginner;
+        }
+
+
         public void Run()
         {
             bool carryOn = true;

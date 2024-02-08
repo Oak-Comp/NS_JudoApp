@@ -8,7 +8,7 @@
             Console.WriteLine("by AQ Digital Solutions");
 
             FeesCalculator feesCalculator = new FeesCalculator();
-            feesCalculator.Run();
+            feesCalculator.GetPlan();
 
             Console.WriteLine("Program Terminated!");
         }
