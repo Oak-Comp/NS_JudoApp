@@ -38,8 +38,27 @@ namespace NS_JudoApp.Helpers
                 typeof(DisplayAttribute), false) as DisplayAttribute[];
 
             if (descriptionAttributes == null) return string.Empty;
+
             return (descriptionAttributes.Length > 0) ? descriptionAttributes[0].Name : value.ToString();
         }
-    }
 
+        public static T GetEnumMember<T>(int index) where T : struct, IConvertible
+        {
+            if (!typeof(T).IsEnum)
+            {
+                throw new ArgumentException("T must be an enumerated type");
+            }
+
+            T[] values = (T[])Enum.GetValues(typeof(T));
+            
+            if (index < 0 || index >= values.Length)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range");
+            }
+
+            return values[index];
+        }
+
+
+    }
 }
