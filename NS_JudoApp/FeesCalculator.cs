@@ -7,33 +7,39 @@ namespace NS_JudoApp
     /// </summary>
     public class FeesCalculator
     {
-        public TrainingPlan GetPlan()
+        private readonly JudoPlan[] TrainingPlans =
+        { 
+            new JudoPlan { Name = "Beginner", Price = 25.00m },
+            new JudoPlan { Name = "Intermediate", Price = 30.00m },
+            new JudoPlan { Name = "Advanced", Price = 35.00m }
+        };
+        public JudoPlan GetPlan()
         {
+            Console.WriteLine();
+            Console.WriteLine("Training Plan - Prices (£GBP)");
+            Console.WriteLine();
+
+            int planNumber = 1;
+
+            foreach (JudoPlan plan in TrainingPlans)
+            {
+                Console.Write($"    {planNumber}: ");
+                Console.WriteLine(plan.ToString());
+
+                planNumber++;
+            }
+
+            Console.WriteLine();
+            Console.Write("    Select training plan number > ");
             
-            //Console.WriteLine();
-            //Console.WriteLine("Training Plan - Prices (£GBP)");
-            //Console.WriteLine();
+            int choice = ConsoleHelper.InputInt(
+                "Please enter your choice > ", 1, TrainingPlans.Length);
+            
+            Console.WriteLine();
 
-            //int planNumber = 1;
+            Console.WriteLine($"\n   Your Choice is {TrainingPlans[choice -1].Name}");
 
-            //foreach(int i in Enum.GetValues(typeof(TrainingPlan)))
-            //{
-            //    Console.Write($"    {planNumber}: ");
-            //    Console.Write($"{Enum.GetName(typeof(TrainingPlan), i)}  ");
-            //    Console.Write($"£{Convert.ToInt32(i)}");
-            //    Console.WriteLine();
-
-            //    planNumber++;
-            //}
-
-            //Console.WriteLine();
-            //Console.Write("    Select training plan number > ");
-            //var plan = (int)ConsoleHelper.InputNumber("Please enter your choice > ", 1, 3);
-            //Console.WriteLine();
-
-            DisplayValues<TrainingPlan>();
-
-            return TrainingPlan.Beginner;
+            return TrainingPlans[choice];
         }
         
         public static void DisplayValues<T>() where T : Enum

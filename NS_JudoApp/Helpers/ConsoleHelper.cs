@@ -47,6 +47,11 @@
             }
         }
 
+        public static int InputInt(string prompt)
+        {
+            double number = InputNumber(prompt);
+            return (int)number;
+        }   
 
         /// <summary>
         /// This method will display a prompt to the user and
@@ -79,6 +84,11 @@
             return number;
         }
 
+        public static int InputInt(string prompt, double min, double max)
+        {
+            double number = InputNumber(prompt, min, max);
+            return (int)number;
+        }
 
         /// <summary>
         /// This method will prompt the user to enter a number
